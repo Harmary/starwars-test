@@ -108,7 +108,6 @@ body {
 .open {
   top: 0;
   right: 0;
-  animation: open 1s easy-in;
 }
 
 .close {
@@ -140,30 +139,6 @@ body {
   overflow-y: auto;
 }
 
-@keyframes open {
-  from {
-    top: 0;
-    right: -250px;
-  }
-
-  to {
-    top: 0;
-    right: 0;
-  }
-}
-
-@keyframes close {
-  from {
-    top: 0;
-    right: 0;
-  }
-
-  to {
-    top: 0;
-    right: -250px;
-  }
-}
-
 .tab {
   padding: 20px;
   margin: 10px;
@@ -181,12 +156,4 @@ body {
 
 .tab-close {
   display: none;
-}
-
-.button-next {
-  padding: 10px 88px;
-  height: 80px;
-  margin: 10px;
-  background-color: #fff;
-  color: #000;
 }

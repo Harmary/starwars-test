@@ -7,8 +7,6 @@ export function Sidebar() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [request, setRequest] = useState('https://swapi.dev/api/people');
-    const [next, setNext] = useState('');
-    const [prev, setPrev] = useState(null);
 
     function setSidebarState() {
         sidebarState === true ? setSidebar(false) : setSidebar(true);
@@ -24,8 +22,6 @@ export function Sidebar() {
                         setIsLoaded(true);
                         window.localStorage.setItem('people', JSON.stringify(result))
                         setPeople(result.results);
-                        setNext(result.next);
-                        setPrev(result.previous);
                     },
                     (error) => {
                         setIsLoaded(true);
@@ -34,14 +30,12 @@ export function Sidebar() {
         }
         else {
             setPeople(JSON.parse(window.localStorage.getItem('people')).results);
-            setNext(JSON.parse(window.localStorage.getItem('people')).next);
-            setPrev(JSON.parse(window.localStorage.getItem('people')).previous);
         }
     }
 
     useEffect(() => {
         loadData();
-    }, [])
+    },[])
 
     return (
         <div className={sidebarState === true ? "sidebar open" : "sidebar close"}>
@@ -54,8 +48,6 @@ export function Sidebar() {
                         <Tab key={index} person={person} />
                     )
                 }
-                <button className="button-next" onClick={() => {setRequest(next); loadData();console.log(next)}}>Next</button>
-                <button className="button-next" onClick={() => {setRequest(prev); loadData();console.log(request)}}>Prev</button>
             </div>
         </div>
     );
